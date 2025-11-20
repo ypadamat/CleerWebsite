@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Cleer — The Second You</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root {
+        --primary-bg: #dad7cd;
+        --secondary-bg: #e6e1d1;
+        --accent-bg: #e8e5da;
+        --card-bg: #f5f3ee;
+        --primary-text: #2a2520;
+        --secondary-text: #97A87A;
+        --accent-text: #4a4540;
+        --accent-color: #97A87A;
+        --accent-hover: #86976a;
+        --accent-light: #b5c49b;
+        --accent-muted: #e8ece0;
+        --gradient-primary: linear-gradient(135deg, #97A87A 0%, #a8b98b 100%);
+        --gradient-secondary: #f3edd8;
+        --gradient-accent: linear-gradient(135deg, #97A87A 0%, #b5c49b 100%);
+        --border-color: #e6e1d1;
+        --border-light: #e8e5da;
+        --shadow: 0 10px 25px rgba(151, 168, 122, 0.08);
+        --shadow-hover: 0 20px 40px rgba(151, 168, 122, 0.12);
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 6rem;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--primary-bg); color: var(--primary-text); line-height: 1.7; overflow-x: hidden; font-weight: 400; font-size: 16px; }
+
+    body::before {
+        content: '';
+        position: fixed; inset: 0;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
+          radial-gradient(circle at 40% 60%, rgba(219, 234, 254, 0.01) 0%, transparent 50%),
+          linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        z-index: -2;
+    }
+    body::after {
+        content: '';
+        position: fixed; inset: 0;
+        background-image:
+          linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px; z-index: -1; opacity: 0.3;
+    }
+
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(250, 250, 250, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; padding: var(--spacing-sm) var(--spacing-lg); transition: all 0.3s ease; box-shadow: var(--shadow-card); }
+    .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: var(--spacing-sm); font-size: 1.5rem; font-weight: 700; color: var(--primary-text); text-decoration: none; transition: all 0.3s ease; }
+    .logo:hover { transform: translateY(-2px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .nav-menu { display: flex; list-style: none; gap: var(--spacing-lg); }
+    .nav-link { color: var(--accent-text); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative; padding: var(--spacing-xs) 0; font-size: 0.95rem; letter-spacing: 0.01em; }
+    .nav-link:hover { color: var(--accent-color); transform: translateY(-1px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gradient-primary); transition: width 0.3s ease; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--accent-color); }
+    .nav-link.active::after { width: 100%; }
+    .mobile-menu-toggle { display: none; background: none; border: none; color: var(--primary-text); font-size: 1.5rem; cursor: pointer; }
+
+    .page-container { min-height: 100vh; padding-top: 80px; }
+
+    .section { padding: var(--spacing-3xl) var(--spacing-lg); max-width: 900px; margin: 0 auto; }
+    .section-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xl); background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .thank-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 36px; padding: var(--spacing-2xl); box-shadow: var(--shadow-card); text-align: center; }
+    .thank-icon { width: 80px; height: 80px; margin: 0 auto var(--spacing-md); border-radius: 50%; background: var(--gradient-primary); display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow); }
+    .thank-icon i { color: #fff; font-size: 2rem; }
+    .thank-title { color: var(--accent-color); font-size: 1.6rem; font-weight: 700; margin-bottom: var(--spacing-sm); }
+    .thank-text { color: var(--secondary-text); margin-bottom: var(--spacing-xl); }
+    .btn { padding: var(--spacing-md) var(--spacing-xl); border: none; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: var(--spacing-sm); transition: all 0.3s ease; cursor: pointer; font-size: 1rem; }
+    .btn-primary { background: #bfdcfd9c; color: #798ff1ce; border: 1px solid #6fa6ff85; box-shadow: var(--shadow-card); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); color: #e2e8f0; background: #1f62f3de; border: 1px solid #dbeafe; }
+
+    .footer { background: var(--secondary-bg); border-top: 1px solid var(--border-color); padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg); text-align: center; box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05); }
+    .footer-content { max-width: 1400px; margin: 0 auto; }
+    .footer p { color: var(--secondary-text); margin-bottom: var(--spacing-sm); }
+
+    @media (max-width: 768px) {
+      .navbar { padding: var(--spacing-sm) var(--spacing-md); }
+      .nav-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(250, 250, 250, 0.98); backdrop-filter: blur(20px); flex-direction: column; padding: var(--spacing-lg); border-top: 1px solid var(--border-color); box-shadow: var(--shadow-hover); z-index: 999; }
+      .nav-menu.active { display: flex; }
+      .nav-link { display: block; padding: var(--spacing-md) 0; font-size: 1.1rem; border-bottom: 1px solid var(--border-light); width: 100%; }
+      .nav-link:last-child { border-bottom: none; }
+      .mobile-menu-toggle { display: block; padding: var(--spacing-sm); font-size: 1.3rem; }
+      .section { padding: var(--spacing-xl) var(--spacing-sm); }
+    }
+
+    @media (hover: none) and (pointer: coarse)) {
+      .btn, .nav-link { min-height: 44px; min-width: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="CleerLogoTrans.png" alt="Cleer Logo" style="height: 6.2rem; width: auto;">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+        <li><a href="team.html" class="nav-link">Join Team</a></li>
+        <li><a href="demo.html" class="nav-link">Demo</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <section class="section">
+      <div class="thank-card">
+        <div class="thank-icon"><i class="fas fa-check"></i></div>
+        <div class="thank-title">Thank you!</div>
+        <p class="thank-text">Your message has been sent successfully. Our team will get back to you soon.</p>
+        <div style="display:flex; justify-content:center; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Go to Home</a>
+          <a href="features.html" class="btn btn-primary"><i class="fas fa-stars"></i> Explore Features</a>
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Send Another Message</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
+      <p>Building the future of AI assistance, one innovation at a time.</p>
+    </div>
+  </footer>
+
+  <script>
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    mobileMenuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navMenu.classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (navMenu.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+      else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+    });
+    navLinks.forEach(link => { link.addEventListener('click', function() { navMenu.classList.remove('active'); const icon = mobileMenuToggle.querySelector('i'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }); });
+    document.addEventListener('click', function(e) { if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) { navMenu.classList.remove('active'); const icon = mobileMenuToggle.querySelector('i'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } });
+    window.addEventListener('scroll', function() { if (navMenu.classList.contains('active')) { navMenu.classList.remove('active'); const icon = mobileMenuToggle.querySelector('i'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } });
+  </script>
+</body>
+</html>
+

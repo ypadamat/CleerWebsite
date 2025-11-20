@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+
+
+    :root {
+        --primary-bg: #fafafa;
+        --secondary-bg: #f5f5f5;
+        --accent-bg: #ffffff;
+        --card-bg: #ffffff;
+        --primary-text: #1a1a1a;
+        --secondary-text: #6b7280;
+        --accent-text: #4b5563;
+        --accent-color: #ef9df7;
+        --accent-hover: #eb71e0;
+        --accent-light: #f193fd;
+        --accent-muted: #eff6ff;
+        --gradient-primary: linear-gradient(135deg, #ed95f0 0%, #f1a4f1 100%);
+        --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        --gradient-accent: linear-gradient(135deg, #93c5fd 0%, #dbeafe 100%);
+        --border-color: #e2e8f0;
+        --border-light: #f1f5f9;
+        --shadow: 0 10px 25px rgba(37, 99, 235, 0.08);
+        --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.12);
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 6rem;
+    }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fff6ff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+.header-text {
+    margin-top: 170px;
+    font-size: 48px;
+    font-weight: 750;
+    color: #333;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'San Francisco', sans-serif;
+}
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            z-index: 10;
+            position: relative;
+        }
+
+        .password-input {
+            width: 300px;
+            padding: 16px 24px;
+            border-radius: 50px;
+            border: 3px solid #e3a7ff;
+            font-size: 16px;
+            outline: none;
+            transition: width 0.3s ease, border-color 0.3s ease;
+            text-align: center;
+        }
+
+        .password-input:focus {
+            width: 320px;
+            border-color: #999;
+        }
+
+        .password-input::placeholder {
+            color: #aaa;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .floating-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-element.dynamic {
+            animation-name: drift;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            will-change: transform;
+        }
+
+        @keyframes drift {
+            0%, 100% {
+                transform: translate(0, 0) rotate(var(--base-rot));
+            }
+            25% {
+                transform: translate(calc(var(--dx) * 0.3), calc(var(--dy) * 0.3)) rotate(calc(var(--base-rot) + var(--rot-osc)));
+            }
+            50% {
+                transform: translate(var(--dx), var(--dy)) rotate(var(--base-rot));
+            }
+            75% {
+                transform: translate(calc(var(--dx) * 0.3), calc(var(--dy) * 0.3)) rotate(calc(var(--base-rot) - var(--rot-osc)));
+            }
+        }
+
+.navbar {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55%;
+    max-width: 100%;
+    border-radius: 40px;
+    background: #d4d4d460;
+    backdrop-filter: blur(15px);
+    border: 1px solid #3d3d3d25;
+    z-index: 1000;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    transition: width 0.3s ease; 
+    box-shadow: var(--shadow-card);
+}
+
+
+
+    .nav-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+        transform: translateY(-2px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: var(--spacing-lg);
+    }
+
+    .nav-link {
+        color: var(--accent-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: var(--spacing-xs) 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+    }
+
+    .nav-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-1px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link.active {
+        color: var(--accent-color);
+    }
+
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--primary-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Hide full navbar on small screens (mobile) */
+    @media (max-width: 1350px) {
+        .navbar {
+            display: none !important;
+        }
+    }
+
+    </style>
+</head>
+<body>
+
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="CleerLogoTrans.png" alt="Cleer Logo" style="height: 3.1rem; width: auto;">
+        
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+        <li><a href="team.html" class="nav-link">Join Team</a></li>
+        <li><a href="demo.html" class="nav-link">Demo</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+
+    <div class="floating-layer"></div>
+    
+    <div class="header-text">Talk to Cleer. Just Cleer.</div>
+    
+    <div class="container">
+        <input type="password" class="password-input" placeholder="Enter password" id="passwordInput">
+    </div>
+
+    <script>
+        // Password check
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const password = this.value;
+                // Replace with your actual password and Dropbox link
+                if (password === 'J-07.21.2010') {
+                    window.location.href = 'https://www.dropbox.com/scl/fi/5yo0xpainzq9fck60tc38/Cleer-Setup-1.0.3.exe?rlkey=tppgxxaebugdbja8vpa66sqwf&st=ig1kj526&dl=1';
+                } else {
+                    this.value = '';
+                    this.placeholder = 'Incorrect password';
+                    setTimeout(() => {
+                        this.placeholder = 'Enter password';
+                    }, 2000);
+                }
+            }
+        });
+
+        // Dynamic floating fall leaves
+        (function() {
+            const layer = document.querySelector('.floating-layer');
+            if (!layer) return;
+
+            const leafIcons = ['fa-leaf'];
+            const rootFontPx = 16;
+
+            function clearLayer() {
+                while (layer.firstChild) layer.removeChild(layer.firstChild);
+            }
+
+            function placeLeaves() {
+                clearLayer();
+
+                const areaWidth = window.innerWidth;
+                const areaHeight = window.innerHeight;
+                const edgeMargin = 24;
+                const padding = 10;
+
+                const vw = window.innerWidth;
+                let targetCount = 60;
+                if (vw >= 1280) targetCount = 80;
+                else if (vw >= 768) targetCount = 70;
+                else targetCount = 50;
+
+                const placed = [];
+                let created = 0;
+                let attempts = 0;
+                const maxAttempts = targetCount * 200;
+
+                while (created < targetCount && attempts < maxAttempts) {
+                    attempts++;
+
+                    const sizeRem = (2.5 + Math.random() * 3.5).toFixed(2);
+                    const sizePx = parseFloat(sizeRem) * rootFontPx;
+                    const radius = sizePx / 2;
+
+                    if (areaWidth < sizePx + edgeMargin * 2 || areaHeight < sizePx + edgeMargin * 2) break;
+
+                    const maxX = areaWidth - edgeMargin - sizePx;
+                    const maxY = areaHeight - edgeMargin - sizePx;
+                    const x = edgeMargin + Math.random() * maxX;
+                    const y = edgeMargin + Math.random() * maxY;
+                    const cx = x + radius;
+                    const cy = y + radius;
+
+                    let overlaps = false;
+                    for (let i = 0; i < placed.length; i++) {
+                        const p = placed[i];
+                        const dx = p.x - cx;
+                        const dy = p.y - cy;
+                        const dist = Math.hypot(dx, dy);
+                        if (dist < p.r + radius + padding) {
+                            overlaps = true;
+                            break;
+                        }
+                    }
+                    if (overlaps) continue;
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'floating-element dynamic';
+                    wrapper.style.top = y + 'px';
+                    wrapper.style.left = x + 'px';
+
+                    const baseRot = (Math.random() * 60 - 30).toFixed(1) + 'deg';
+                    const rotOsc = (5 + Math.random() * 8).toFixed(1) + 'deg';
+                    wrapper.style.setProperty('--base-rot', baseRot);
+                    wrapper.style.setProperty('--rot-osc', rotOsc);
+
+                    const driftX = (12 + Math.random() * 28).toFixed(0) + 'px';
+                    const driftY = (12 + Math.random() * 40).toFixed(0) + 'px';
+                    wrapper.style.setProperty('--dx', driftX);
+                    wrapper.style.setProperty('--dy', driftY);
+
+                    const duration = (8 + Math.random() * 15).toFixed(1) + 's';
+                    const delay = (Math.random() * 6).toFixed(2) + 's';
+                    wrapper.style.animationDuration = duration;
+                    wrapper.style.animationDelay = delay;
+
+                    wrapper.style.opacity = (0.035 * 1.7 + Math.random() * (0.045 * 1.7)).toFixed(3);
+
+                    const icon = document.createElement('i');
+                    const iconClass = leafIcons[Math.floor(Math.random() * leafIcons.length)];
+                    icon.className = 'fas ' + iconClass;
+                    icon.style.fontSize = sizeRem + 'rem';
+                    icon.style.color = '#8b4513';
+
+                    wrapper.appendChild(icon);
+                    layer.appendChild(wrapper);
+
+                    placed.push({ x: cx, y: cy, r: radius });
+                    created++;
+                }
+            }
+
+            placeLeaves();
+            window.addEventListener('resize', placeLeaves);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo | Cleer — The Second You</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    /* CSS Variables - Premium Color Palette */
+:root {
+        --primary-bg: #FEFBF6;
+        --secondary-bg: #f5f1e8;
+        --accent-bg: #ffffff;
+        --card-bg: #ffffff;
+        --primary-text: #4B4D38;
+        --secondary-text: #6b6e52;
+        --accent-text: #5a5c44;
+        --accent-color: #4B4D38;
+        --accent-hover: #3a3c2a;
+        --accent-light: #6b6e52;
+        --accent-muted: #e8e7de;
+        --gradient-primary: linear-gradient(135deg, #4B4D38 0%, #5a5c44 100%);
+        --gradient-secondary: linear-gradient(135deg, #FEFBF6 0%, #f5f1e8 100%);
+        --gradient-accent: linear-gradient(135deg, #4B4D38 0%, #6b6e52 100%);
+        --border-color: #e8e5da;
+        --border-light: #f5f1e8;
+        --shadow: 0 10px 25px rgba(75, 77, 56, 0.08);
+        --shadow-hover: 0 20px 40px rgba(75, 77, 56, 0.12);
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 6rem;
+    }
+
+    /* Reset & Base */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    /* Sophisticated Background */
+
+
+    /* Subtle Grid Texture */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    /* Navigation */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(250, 250, 250, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+        transform: translateY(-2px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: var(--spacing-lg);
+    }
+
+    .nav-link {
+        color: var(--accent-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: var(--spacing-xs) 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+    }
+
+    .nav-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-1px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link.active {
+        color: var(--accent-color);
+    }
+
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--primary-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Page Container */
+    .page-container {
+        min-height: 100vh;
+        padding-top: 80px;
+    }
+
+    /* Section Styles */
+    .section {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--secondary-text);
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Demo Interface */
+    .demo-container {
+        background: var(--card-bg);
+        border-radius: 54px;
+        padding: var(--spacing-2xl);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        margin: var(--spacing-2xl) 0;
+    }
+
+    .demo-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-lg);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .demo-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .demo-icon i {
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .demo-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--accent-color);
+    }
+
+    .demo-subtitle {
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+    }
+
+    .demo-interface {
+        background: var(--gradient-secondary);
+        border-radius: 36px;
+        padding: var(--spacing-xl);
+        border: 2px solid var(--accent-light);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .demo-screen {
+        background: white;
+        border-radius: 32px;
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-card);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .demo-message {
+        background: var(--accent-muted);
+        border-radius: 12px;
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        border-left: 4px solid var(--accent-color);
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--accent-text);
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    .demo-input {
+        background: white;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        width: 100%;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .demo-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px var(--accent-muted);
+    }
+
+    .demo-button {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: var(--spacing-sm);
+    }
+
+    .demo-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .demo-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+    }
+
+    .feature-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 56px;
+        padding: var(--spacing-lg);
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--spacing-md);
+    }
+
+    .feature-icon i {
+        font-size: 1.5rem;
+        color: var(--primary-bg);
+    }
+
+    .feature-card h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .feature-card p {
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+    }
+
+    .typing-indicator {
+        display: inline-block;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* Mouse cursor styles */
+    .demo-mouse {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #333;
+        border-radius: 50%;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #333;
+    }
+
+    .demo-mouse.clicking {
+        transform: scale(0.7);
+    }
+
+    .demo-mouse.visible {
+        opacity: 1;
+    }
+
+    /* Demo container positioning for mouse */
+    .demo-interface {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Cursor trail effect */
+    .cursor-trail {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(51, 51, 51, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 999;
+        animation: fadeOut 0.5s ease-out forwards;
+    }
+
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+    }
+
+    /* Typing animation */
+    .typing-text {
+        border-right: 2px solid var(--accent-color);
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%, 50% { border-color: var(--accent-color); }
+        51%, 100% { border-color: transparent; }
+    }
+
+    /* Demo automation controls */
+    .demo-auto {
+        position: relative;
+    }
+
+    .demo-auto .demo-input {
+        position: relative;
+    }
+
+    .demo-auto .demo-button {
+        position: relative;
+    }
+
+    /* Footer */
+    .footer {
+        background: var(--secondary-bg);
+        border-top: 1px solid var(--border-color);
+        padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+        text-align: center;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .footer p {
+        color: var(--secondary-text);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+    }
+
+    .social-link {
+        color: var(--secondary-text);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Enhanced Mobile Responsive Design */
+    @media (max-width: 1024px) {
+        .nav-container {
+            padding: 0 var(--spacing-md);
+        }
+        
+        .section {
+            padding: var(--spacing-2xl) var(--spacing-md);
+        }
+        
+        .demo-container {
+            padding: var(--spacing-xl);
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Enhanced Mobile Navigation */
+        .navbar {
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+        
+        .nav-container {
+            padding: 0;
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+        }
+        
+        .nav-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.98);
+            backdrop-filter: blur(20px);
+            flex-direction: column;
+            padding: var(--spacing-lg);
+            border-top: 1px solid var(--border-color);
+            box-shadow: var(--shadow-hover);
+            z-index: 999;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: var(--spacing-md) 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-light);
+            width: 100%;
+        }
+        
+        .nav-link:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+            padding: var(--spacing-sm);
+            font-size: 1.3rem;
+        }
+        
+        /* Enhanced Mobile Sections */
+        .section {
+            padding: var(--spacing-xl) var(--spacing-sm);
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .section-subtitle {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Mobile Demo Interface */
+        .demo-container {
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .demo-header {
+            flex-direction: column;
+            text-align: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .demo-title {
+            font-size: 1.3rem;
+        }
+        
+        .demo-interface {
+            padding: var(--spacing-lg);
+        }
+        
+        .demo-screen {
+            padding: var(--spacing-md);
+        }
+        
+        .demo-message {
+            font-size: 0.85rem;
+            padding: var(--spacing-sm);
+        }
+        
+        .demo-input {
+            font-size: 0.9rem;
+            padding: var(--spacing-sm);
+        }
+        
+        .demo-button {
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: 0.9rem;
+        }
+
+        .demo-features {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        .feature-card {
+            padding: var(--spacing-md);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.1rem;
+        }
+        
+        .feature-card p {
+            font-size: 0.85rem;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .feature-icon i {
+            font-size: 1.2rem;
+        }
+        
+        /* Mobile Footer */
+        .footer {
+            padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-md);
+        }
+        
+        .social-links {
+            gap: var(--spacing-sm);
+        }
+        
+        .social-link {
+            font-size: 1.3rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        /* Extra Small Mobile Devices */
+        .section {
+            padding: var(--spacing-lg) var(--spacing-sm);
+        }
+        
+        .section-title {
+            font-size: clamp(1.8rem, 10vw, 2.5rem);
+        }
+        
+        .demo-container {
+            padding: var(--spacing-md);
+        }
+        
+        .demo-interface {
+            padding: var(--spacing-md);
+        }
+        
+        .demo-screen {
+            padding: var(--spacing-sm);
+        }
+        
+        .feature-card {
+            padding: var(--spacing-sm);
+        }
+        
+        .feature-card h3 {
+            font-size: 1rem;
+        }
+        
+        .feature-card p {
+            font-size: 0.8rem;
+        }
+    }
+    
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+        .btn, .nav-link, .feature-card, .demo-button, .social-link {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .feature-card:hover {
+            transform: none;
+        }
+        
+        .feature-card:active {
+            transform: scale(0.98);
+        }
+        
+        .demo-button:hover {
+            transform: none;
+        }
+        
+        .demo-button:active {
+            transform: scale(0.95);
+        }
+    }
+</style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="CleerLogoTrans.png" alt="Cleer Logo" style="height: 6.2rem; width: auto;">
+        
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+        <li><a href="team.html" class="nav-link">Join Team</a></li>
+        <li><a href="demo.html" class="nav-link active">Demo</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Container -->
+  <div class="page-container">
+    <!-- Demo Section -->
+    <section class="section">
+      <h2 class="section-title">See Cleer in Action</h2>
+      <p class="section-subtitle">Experience the power of visual AI assistance</p>
+      
+      <div class="demo-container">
+        <div class="demo-header">
+          <div class="demo-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div>
+            <div class="demo-title">Cleer AI Assistant</div>
+            <div class="demo-subtitle">Visual Intelligence Demo</div>
+          </div>
+        </div>
+        
+        <div class="demo-interface demo-auto">
+          <div class="demo-mouse" id="demo-mouse"></div>
+          <div class="demo-screen">
+            <h3 style="color: var(--accent-color); margin-bottom: var(--spacing-md);">Automated Demo</h3>
+            <p style="color: var(--secondary-text); margin-bottom: var(--spacing-lg);">Watch Cleer in action as it demonstrates its capabilities.</p>
+            
+            <div class="demo-message" id="demo-message">
+              "I can see you're working on a presentation. Would you like me to help format the slides?"
+            </div>
+            
+            <input type="text" class="demo-input" placeholder="Ask Cleer anything..." id="demo-input" readonly>
+            <button class="demo-button" id="demo-button">Send Message</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-features">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>Visual Understanding</h3>
+          <p>Cleer processes visual information in real-time, understanding context from your screen, documents, and applications.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Contextual Intelligence</h3>
+          <p>Understands your workflow and provides assistance with minimal input, learning your patterns and preferences.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h3>Intelligent Automation</h3>
+          <p>Automatically identifies opportunities to assist, from formatting documents to organizing data seamlessly.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Privacy First</h3>
+          <p>All processing happens locally with enterprise-grade security, ensuring your data never leaves your device.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
+      <p>Building the future of AI assistance, one innovation at a time.</p>
+      <div class="social-links">
+       
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    mobileMenuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navMenu.classList.toggle('active');
+      
+      // Toggle hamburger icon
+      const icon = this.querySelector('i');
+      if (navMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close menu when clicking on nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close menu on scroll
+    window.addEventListener('scroll', function() {
+      if (navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Enhanced scroll effect to navbar
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        navbar.style.background = 'rgba(250, 250, 250, 0.98)';
+        navbar.style.backdropFilter = 'blur(20px)';
+      } else {
+        navbar.style.background = 'rgba(250, 250, 250, 0.95)';
+        navbar.style.backdropFilter = 'blur(20px)';
+      }
+      
+      // Hide navbar on scroll down, show on scroll up (mobile only)
+      if (window.innerWidth <= 768) {
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+          navbar.style.transform = 'translateY(-100%)';
+        } else {
+          navbar.style.transform = 'translateY(0)';
+        }
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // Enhanced Demo functionality
+    const responses = [
+      "I can see you're working on a presentation. Would you like me to help format the slides?",
+      "I notice you're writing an email. I can help you improve the tone and structure.",
+      "I can see you're browsing documentation. Would you like me to summarize the key points?",
+      "I notice you're working on code. I can help you optimize this function for better performance.",
+      "I can see you're organizing files. I can help you create a better folder structure.",
+      "I notice you're researching a topic. I can help you find more relevant information."
+    ];
+
+    // Automated Demo functionality
+    class AutomatedDemo {
+      constructor() {
+        this.mouse = document.getElementById('demo-mouse');
+        this.input = document.getElementById('demo-input');
+        this.button = document.getElementById('demo-button');
+        this.message = document.getElementById('demo-message');
+        this.demoContainer = document.querySelector('.demo-interface');
+        
+        this.isRunning = false;
+        this.init();
+      }
+      
+      init() {
+        // Start the demo automatically after a short delay
+        setTimeout(() => {
+          this.startDemo();
+        }, 2000);
+      }
+      
+      startDemo() {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        this.runDemoSequence();
+      }
+      
+      async runDemoSequence() {
+        // Wait a moment before starting
+        await this.delay(1000);
+        
+        // Move mouse to input field
+        await this.moveMouseToInput();
+        
+        // Click on input field
+        await this.clickInput();
+        
+        // Type message
+        await this.typeMessage();
+        
+        // Click send button
+        await this.clickSendButton();
+        
+        // Show thinking indicator
+        await this.showThinking();
+        
+        // Show response
+        await this.showResponse();
+        
+        // Reset for next cycle
+        await this.resetDemo();
+        
+        // Loop the demo
+        setTimeout(() => {
+          this.isRunning = false;
+          this.startDemo();
+        }, 3000);
+      }
+      
+      async moveMouseToInput() {
+        const inputRect = this.input.getBoundingClientRect();
+        const containerRect = this.demoContainer.getBoundingClientRect();
+        
+        // Start mouse from outside the box (top-left)
+        const startX = -50;
+        const startY = -50;
+        const endX = inputRect.left - containerRect.left + inputRect.width / 2;
+        const endY = inputRect.top - containerRect.top + inputRect.height / 2;
+        
+        this.mouse.style.left = startX + 'px';
+        this.mouse.style.top = startY + 'px';
+        this.mouse.classList.add('visible');
+        
+        // Animate mouse movement
+        await this.animateMouseMove(startX, startY, endX, endY, 1500);
+      }
+      
+      async animateMouseMove(startX, startY, endX, endY, duration) {
+        return new Promise(resolve => {
+          const startTime = performance.now();
+          
+          const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function for smooth movement
+            const easeInOutCubic = progress < 0.5 
+              ? 4 * progress * progress * progress 
+              : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            
+            const currentX = startX + (endX - startX) * easeInOutCubic;
+            const currentY = startY + (endY - startY) * easeInOutCubic;
+            
+            this.mouse.style.left = currentX + 'px';
+            this.mouse.style.top = currentY + 'px';
+            
+            // Create cursor trail
+            this.createCursorTrail(currentX, currentY);
+            
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              resolve();
+            }
+          };
+          
+          requestAnimationFrame(animate);
+        });
+      }
+      
+      createCursorTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = x + 'px';
+        trail.style.top = y + 'px';
+        this.demoContainer.appendChild(trail);
+        
+        // Remove trail after animation
+        setTimeout(() => {
+          if (trail.parentNode) {
+            trail.parentNode.removeChild(trail);
+          }
+        }, 500);
+      }
+      
+      async clickInput() {
+        this.mouse.classList.add('clicking');
+        await this.delay(200);
+        this.mouse.classList.remove('clicking');
+        this.input.focus();
+        await this.delay(300);
+      }
+      
+      async typeMessage() {
+        // Single Q&A pair that repeats
+        const message = "Yes how do i format this?";
+        this.currentAnswer = "I'll help you format your presentation! Scanning your slides… I see the title text is a bit small and the bullet points are crowded. Increasing font size and spacing will help readability. Your color scheme is a bit muted—adding a contrasting accent color can make key points pop. Slide 3’s chart could use a lighter background so the data stands out. I’d also add subtle transitions like ‘Fade’ to keep the flow smooth. These tweaks will make your presentation look polished and professional.";
+        
+        this.input.value = '';
+        
+        for (let i = 0; i <= message.length; i++) {
+          this.input.value = message.substring(0, i);
+          this.input.classList.add('typing-text');
+          
+          // Random typing speed variation
+          const delay = Math.random() * 100 + 50;
+          await this.delay(delay);
+        }
+        
+        this.input.classList.remove('typing-text');
+        await this.delay(500);
+      }
+      
+      async clickSendButton() {
+        const buttonRect = this.button.getBoundingClientRect();
+        const containerRect = this.demoContainer.getBoundingClientRect();
+        
+        const endX = buttonRect.left - containerRect.left + buttonRect.width / 2;
+        const endY = buttonRect.top - containerRect.top + buttonRect.height / 2;
+        
+        const currentX = parseFloat(this.mouse.style.left);
+        const currentY = parseFloat(this.mouse.style.top);
+        
+        await this.animateMouseMove(currentX, currentY, endX, endY, 800);
+        
+        this.mouse.classList.add('clicking');
+        await this.delay(200);
+        this.mouse.classList.remove('clicking');
+        
+        // Trigger button click
+        this.button.click();
+        await this.delay(300);
+      }
+      
+      async showThinking() {
+        this.message.innerHTML = '<span class="typing-indicator">Cleer is thinking...</span>';
+        await this.delay(2000);
+      }
+      
+      async showResponse() {
+        // Use the predetermined answer that matches the question
+        const response = this.currentAnswer;
+        
+        this.message.innerHTML = `"${response}"`;
+        this.message.style.animation = 'fadeInUp 0.5s ease-out';
+        await this.delay(3000);
+      }
+      
+      async resetDemo() {
+        this.input.value = '';
+        this.message.innerHTML = '"I can see you\'re working on a presentation. Would you like me to help format the slides?"';
+        this.message.style.animation = '';
+        
+        // Move mouse back outside
+        this.mouse.style.left = '-50px';
+        this.mouse.style.top = '-50px';
+        this.mouse.classList.remove('visible');
+        
+        await this.delay(1000);
+      }
+      
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+    }
+
+    // Initialize the automated demo
+    const automatedDemo = new AutomatedDemo();
+
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards with enhanced mobile performance
+    document.querySelectorAll('.feature-card').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      
+      // Stagger animations
+      el.style.transitionDelay = `${index * 0.1}s`;
+      
+      observer.observe(el);
+    });
+    
+    // Touch-friendly interactions
+    if ('ontouchstart' in window) {
+      document.querySelectorAll('.feature-card, .demo-button').forEach(element => {
+        element.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.98)';
+        });
+        
+        element.addEventListener('touchend', function() {
+          this.style.transform = 'scale(1)';
+        });
+      });
+    }
+    
+    // Prevent zoom on double tap for iOS
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+</body>
+</html>
