@@ -1,331 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact | Cleer — The Second You</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-    /* CSS Variables - Premium Color Palette */
-:root {
-        --primary-bg: #FEFBF6;
-        --secondary-bg: #f5f1e8;
-        --accent-bg: #ffffff;
-        --card-bg: #ffffff;
-        --primary-text: #4B4D38;
-        --secondary-text: #6b6e52;
-        --accent-text: #5a5c44;
-        --accent-color: #4B4D38;
-        --accent-hover: #3a3c2a;
-        --accent-light: #6b6e52;
-        --accent-muted: #e8e7de;
-        --gradient-primary: linear-gradient(135deg, #4B4D38 0%, #5a5c44 100%);
-        --gradient-secondary: linear-gradient(135deg, #FEFBF6 0%, #f5f1e8 100%);
-        --gradient-accent: linear-gradient(135deg, #4B4D38 0%, #6b6e52 100%);
-        --border-color: #e8e5da;
-        --border-light: #f5f1e8;
-        --shadow: 0 10px 25px rgba(75, 77, 56, 0.08);
-        --shadow-hover: 0 20px 40px rgba(75, 77, 56, 0.12);
-        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 1rem;
-        --spacing-md: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-xl: 3rem;
-        --spacing-2xl: 4rem;
-        --spacing-3xl: 6rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEER | Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg: #030303;
+            --text: #f0f0f0;
+            --accent: #ccff00;
+            --secondary: #ff3366;
+            --tertiary: #00f0ff;
+            --surface: #0a0a0a;
+            --font-main: 'Syne', sans-serif;
+            --font-mono: 'Space Grotesk', sans-serif;
+        }
 
-    /* Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        background: var(--primary-bg);
-        color: var(--primary-text);
-        line-height: 1.7;
-        overflow-x: hidden;
-        font-weight: 400;
-        font-size: 16px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Subtle Background */
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    body::after {
-        content: '';
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image:
-          linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
-        background-size: 40px 40px;
-        z-index: -1;
-        opacity: 0.3;
-    }
+        /* Typography */
+        .font-syne {
+            font-family: var(--font-main);
+        }
 
-    /* Navigation */
-    .navbar {
-        position: fixed; top: 0; left: 0; right: 0;
-        background: rgba(250, 250, 250, 0.95);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border-color);
-        z-index: 1000;
-        padding: var(--spacing-sm) var(--spacing-lg);
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-card);
-    }
-    .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo { display: flex; align-items: center; gap: var(--spacing-sm); font-size: 1.5rem; font-weight: 700; color: var(--primary-text); text-decoration: none; transition: all 0.3s ease; }
-    .logo:hover { transform: translateY(-2px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .nav-menu { display: flex; list-style: none; gap: var(--spacing-lg); }
-    .nav-link { color: var(--accent-text); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative; padding: var(--spacing-xs) 0; font-size: 0.95rem; letter-spacing: 0.01em; }
-    .nav-link:hover { color: var(--accent-color); transform: translateY(-1px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gradient-primary); transition: width 0.3s ease; }
-    .nav-link:hover::after { width: 100%; }
-    .nav-link.active { color: var(--accent-color); }
-    .nav-link.active::after { width: 100%; }
-    .mobile-menu-toggle { display: none; background: none; border: none; color: var(--primary-text); font-size: 1.5rem; cursor: pointer; }
+        .text-huge {
+            font-size: clamp(3rem, 12vw, 15rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+        }
 
-    /* Page Container */
-    .page-container { min-height: 100vh; padding-top: 80px; }
+        /* Grain & Canvas */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.6;
+            mix-blend-mode: overlay;
+        }
 
-    /* Section Styles */
-    .section { padding: var(--spacing-3xl) var(--spacing-lg); max-width: 1200px; margin: 0 auto; }
-    .section-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; text-align: center; margin-bottom: var(--spacing-xl); background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .section-subtitle { font-size: 1.2rem; color: var(--secondary-text); text-align: center; margin-bottom: var(--spacing-2xl); max-width: 700px; margin-left: auto; margin-right: auto; }
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
 
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-2xl); align-items: start; }
-    .contact-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 36px; padding: var(--spacing-2xl); box-shadow: var(--shadow-card); }
-    .contact-card h3 { color: var(--accent-color); font-size: 1.4rem; margin-bottom: var(--spacing-sm); }
-    .contact-card p { color: var(--secondary-text); }
+        /* Layout */
+        section {
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    .form-field { margin-bottom: var(--spacing-md); }
-    .form-label { display: block; font-weight: 600; color: var(--accent-text); margin-bottom: 0.5rem; }
-    .form-input, .form-textarea, .form-select {
-        width: 100%;
-        background: white;
-        border: 2px solid var(--border-color);
-        border-radius: 12px;
-        padding: 0.85rem 1rem;
-        font-size: 1rem;
-        color: var(--primary-text);
-        transition: all 0.2s ease;
-    }
-    .form-textarea { min-height: 140px; resize: vertical; }
-    .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-muted); }
-    .form-help { font-size: 0.85rem; color: var(--secondary-text); margin-top: 0.25rem; }
+        /* Contact Form */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .btn {
-    padding: var(--spacing-md) var(--spacing-xl);
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 1rem;
-    position: relative;
-    overflow: hidden;
-}
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
 
-/* Updated to match your theme */
-.btn-primary {
-    background: var(--accent-color);
-    color: #dad7cd;
-    border: 1px solid var(--accent-color);
-    box-shadow: var(--shadow-card);
-}
+        .form-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            color: var(--text);
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-    color: #edf0e2;
-    background: var(--accent-hover);
-    border: 1px solid var(--accent-hover);
-}
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
 
+        .form-label {
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            pointer-events: none;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
 
-    .success-banner { display: none; background: var(--accent-muted); border: 1px solid #95a8c40e; color: var(--accent-text); border-radius: 16px; padding: 1rem 1.25rem; margin-bottom: var(--spacing-lg); }
-    .success-banner i { color: var(--accent-color); margin-right: 0.5rem; }
+        .form-input:focus~.form-label,
+        .form-input:not(:placeholder-shown)~.form-label {
+            top: -1rem;
+            font-size: 0.7rem;
+            color: var(--accent);
+        }
 
-    /* Footer */
-    .footer { background: var(--secondary-bg); border-top: 1px solid var(--border-color); padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg); text-align: center; box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05); }
-    .footer-content { max-width: 1400px; margin: 0 auto; }
-    .footer p { color: var(--secondary-text); margin-bottom: var(--spacing-sm); }
-    .social-links { display: flex; justify-content: center; gap: var(--spacing-md); margin-top: var(--spacing-lg); }
-    .social-link { color: var(--secondary-text); font-size: 1.5rem; transition: all 0.3s ease; }
-    .social-link:hover { color: var(--accent-color); transform: translateY(-3px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .submit-btn {
+            background: transparent;
+            border: 1px solid var(--text);
+            color: var(--text);
+            padding: 1rem 3rem;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .nav-container { padding: 0 var(--spacing-md); }
-        .section { padding: var(--spacing-2xl) var(--spacing-md); }
-    }
-    @media (max-width: 768px) {
-        .navbar { padding: var(--spacing-sm) var(--spacing-md); }
-        .nav-container { padding: 0; }
-        .logo { font-size: 1.3rem; }
-        .nav-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(250, 250, 250, 0.98); backdrop-filter: blur(20px); flex-direction: column; padding: var(--spacing-lg); border-top: 1px solid var(--border-color); box-shadow: var(--shadow-hover); z-index: 999; }
-        .nav-menu.active { display: flex; }
-        .nav-menu li { width: 100%; text-align: center; }
-        .nav-link { display: block; padding: var(--spacing-md) 0; font-size: 1.1rem; border-bottom: 1px solid var(--border-light); width: 100%; }
-        .nav-link:last-child { border-bottom: none; }
-        .mobile-menu-toggle { display: block; padding: var(--spacing-sm); font-size: 1.3rem; }
-        .section { padding: var(--spacing-xl) var(--spacing-sm); }
-        .section-title { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: var(--spacing-md); }
-        .section-subtitle { font-size: 1rem; margin-bottom: var(--spacing-lg); }
-        .contact-grid { grid-template-columns: 1fr; gap: var(--spacing-lg); }
-        .contact-card { padding: var(--spacing-xl); }
-        .btn { width: 100%; justify-content: center; }
-    }
-    @media (max-width: 480px) {
-        .section { padding: var(--spacing-lg) var(--spacing-sm); }
-        .section-title { font-size: clamp(1.8rem, 10vw, 2.5rem); }
-        .contact-card { padding: var(--spacing-lg); }
-    }
-    /* Touch-friendly */
-    @media (hover: none) and (pointer: coarse) {
-        .btn, .nav-link, .social-link { min-height: 44px; min-width: 44px; }
-    }
-</style>
+        .submit-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #000;
+        }
+
+        /* Footer */
+        .footer-big {
+            font-family: var(--font-main);
+            font-size: 15vw;
+            font-weight: 800;
+            text-align: center;
+            line-height: 0.8;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text);
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .footer-big:hover {
+            color: var(--accent);
+            -webkit-text-stroke: 2px var(--accent);
+            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.4));
+        }
+    </style>
 </head>
+
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <img src="CleerLogoTrans.png" alt="Cleer Logo" style="height: 6.2rem; width: auto;">
-      </a>
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="features.html" class="nav-link">Features</a></li>
-        <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
-        <li><a href="team.html" class="nav-link">Join Team</a></li>
-        <li><a href="demo.html" class="nav-link">Demo</a></li>
-        <li><a href="contact.html" class="nav-link active">Contact</a></li>
-      </ul>
-      <button class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </nav>
 
-  <!-- Page Container -->
-  <div class="page-container">
-    <section class="section">
-      <h2 class="section-title">Get in touch</h2>
-      <p class="section-subtitle">We'd love to hear from you. Share feedback, partnership ideas, or support requests.</p>
-
-      <div id="success-banner" class="success-banner">
-        <i class="fas fa-check-circle"></i>
-        Thank you! Your message has been sent. We'll get back to you shortly.
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3><i class="fas fa-envelope"></i> Contact Information</h3>
-          <p style="margin-bottom: 1rem;">Reach out to the Cleer team for questions, media inquiries, or collaborations.</p>
-          <div style="display: grid; gap: 0.75rem; margin-top: 1rem;">
-            <div style="display:flex; align-items:center; gap: 0.75rem; color: var(--accent-text);"><i class="fas fa-users" style="color: var(--accent-color);"></i> <a href="team.html" class="nav-link" style="padding:0;">Join the Team</a></div>
-            <div style="display:flex; align-items:center; gap: 0.75rem; color: var(--accent-text);"><i class="fas fa-circle-play" style="color: var(--accent-color);"></i> <a href="demo.html" class="nav-link" style="padding:0;">Watch the Demo</a></div>
-          </div>
-          <div style="margin-top: 1.5rem; background: var(--accent-muted); border-radius: 12px; padding: 1rem; color: var(--accent-text);">
-            We typically respond within 1–2 business days.
-          </div>
+    <!-- Navbar -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference text-white">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <img src="CleerLogoTrans.png" alt="Cleer"
+                class="h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity">
+            <span
+                class="font-syne font-bold text-xl tracking-widest opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-300">CLEER</span>
+        </a>
+        <div class="hidden md:flex gap-8 font-mono text-sm uppercase tracking-widest">
+            <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+            <a href="roadmap.html" class="hover:text-accent transition-colors">Roadmap</a>
+            <a href="team.html" class="hover:text-accent transition-colors">Team</a>
+            <a href="contact.html" class="text-accent">Contact</a>
         </div>
+        <button class="md:hidden text-2xl">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </nav>
 
-        <div class="contact-card">
-          <h3><i class="fas fa-paper-plane"></i> Send us a message</h3>
-          <form id="contact-form" action="https://formspree.io/f/xrbajzzw" method="POST" accept-charset="UTF-8">
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-            <input type="hidden" name="_subject" value="New contact from Cleer website">
-            <input type="hidden" name="_next" value="https://cleer.solnetex.com/thankyou.html">
+    <div class="grain"></div>
+    <canvas id="canvas-bg"></canvas>
 
-            <div class="form-field">
-              <label class="form-label" for="name">Full Name</label>
-              <input class="form-input" type="text" id="name" name="name" required placeholder="Jane Doe">
+    <div class="wrapper">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="text-center z-10">
+                <h1 class="font-syne text-huge font-bold uppercase mb-8 reveal-text">Get<br><span
+                        class="text-stroke text-transparent" style="-webkit-text-stroke: 2px rgba(255,255,255,0.3);">In
+                        Touch</span></h1>
+                <p class="font-mono text-xl uppercase tracking-widest opacity-0 hero-sub">Start the Conversation</p>
             </div>
-            <div class="form-field">
-              <label class="form-label" for="email">Email</label>
-              <input class="form-input" type="email" id="email" name="email" required placeholder="jane@company.com">
-              <div class="form-help">We'll only use this to reply to your message.</div>
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="topic">Topic</label>
-              <select class="form-select" id="topic" name="topic" required>
-                <option value="" disabled selected>Choose a topic…</option>
-                <option>General</option>
-                <option>Support</option>
-                <option>Partnerships</option>
-                <option>Press</option>
-                <option>Careers</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="message">Message</label>
-              <textarea class="form-textarea" id="message" name="message" required placeholder="How can we help?"></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit" id="submit-btn">
-              <i class="fas fa-paper-plane"></i>
-              Send message
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </div>
+        </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
-      <p>Building the future of AI assistance, one innovation at a time.</p>
-      <div class="social-links">
+        <!-- Contact Form -->
+        <section class="py-20">
+            <div class="contact-container">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder=" " id="name" required>
+                        <label for="name" class="form-label">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder=" " id="email" required>
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" placeholder=" " id="message" rows="4" required></textarea>
+                        <label for="message" class="form-label">Message</label>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="submit-btn">Send Signal</button>
+                    </div>
+                </form>
 
-      </div>
+                <div class="mt-16 pt-8 border-t border-white/10 flex justify-between items-center flex-wrap gap-8">
+                    <div>
+                        <h4 class="font-syne text-xl mb-2">Email Us</h4>
+                        <a href="mailto:hello@cleer.ai"
+                            class="opacity-60 hover:opacity-100 hover:text-accent transition-colors">hello@cleer.ai</a>
+                    </div>
+                    <div class="flex gap-8">
+                        <a href="https://www.instagram.com/cleerai"
+                            class="hover:text-white transition-colors">Instagram</a>
+                        <a href="https://discord.gg/7E7g2Q9b5G" class="hover:text-white transition-colors">Discord</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="min-h-[50vh] flex flex-col justify-center items-center relative overflow-hidden">
+            <p class="uppercase tracking-widest mb-10 font-mono text-accent text-sm">Back to home</p>
+            <a href="index.html" class="footer-big">CLEER</a>
+
+            <div
+                class="absolute bottom-10 w-full px-10 flex justify-between text-xs uppercase opacity-30 font-mono tracking-widest">
+                <div>© 2024 Cleer Inc.</div>
+                <div>Privacy Policy</div>
+            </div>
+        </footer>
     </div>
-  </footer>
 
-  <script>
-    // Enhanced Mobile Menu Toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    mobileMenuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      navMenu.classList.toggle('active');
-      const icon = this.querySelector('i');
-      if (navMenu.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
-      else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
-    });
-    navLinks.forEach(link => { link.addEventListener('click', function() { navMenu.classList.remove('active'); const icon = mobileMenuToggle.querySelector('i'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }); });
-    document.addEventListener('click', function(e) { if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) { navMenu.classList.remove('active'); const icon = mobileMenuToggle.querySelector('i'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } });
-    window.addEventListener('scroll', function() { if (navMenu.classList.contains('active')) { navMenu.classList.remove('active'); const icon = mobileMenuToggle.querySelector('i'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } });
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
 
-    // Show success banner if redirected with ?success=1
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('success') === '1') {
-        const banner = document.getElementById('success-banner');
-        if (banner) banner.style.display = 'block';
-      }
-    })();
+    <script>
+        // Lenis
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
 
-    // Disable button on submit to prevent double sends
-    const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    if (form && submitBtn) {
-      form.addEventListener('submit', function() {
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.8';
-      });
-    }
-  </script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Canvas
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width; this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.3; this.vy = (Math.random() - 0.5) * 0.3;
+                this.size = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // Animations
+        gsap.from('.reveal-text', { y: 100, opacity: 0, duration: 1.5, ease: 'power4.out' });
+        gsap.to('.hero-sub', { opacity: 1, letterSpacing: '0.2em', duration: 1.5, delay: 0.5 });
+
+        gsap.from('.contact-container', {
+            y: 50, opacity: 0, duration: 1, delay: 0.5, ease: 'power3.out'
+        });
+    </script>
 </body>
-</html>
 
+</html>

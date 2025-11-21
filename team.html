@@ -1,812 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Join Team | Cleer — The Second You</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-    /* CSS Variables - Premium Color Palette */
-:root {
-        --primary-bg: #FEFBF6;
-        --secondary-bg: #f5f1e8;
-        --accent-bg: #ffffff;
-        --card-bg: #ffffff;
-        --primary-text: #4B4D38;
-        --secondary-text: #6b6e52;
-        --accent-text: #5a5c44;
-        --accent-color: #4B4D38;
-        --accent-hover: #3a3c2a;
-        --accent-light: #6b6e52;
-        --accent-muted: #e8e7de;
-        --gradient-primary: linear-gradient(135deg, #4B4D38 0%, #5a5c44 100%);
-        --gradient-secondary: linear-gradient(135deg, #FEFBF6 0%, #f5f1e8 100%);
-        --gradient-accent: linear-gradient(135deg, #4B4D38 0%, #6b6e52 100%);
-        --border-color: #e8e5da;
-        --border-light: #f5f1e8;
-        --shadow: 0 10px 25px rgba(75, 77, 56, 0.08);
-        --shadow-hover: 0 20px 40px rgba(75, 77, 56, 0.12);
-        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 1rem;
-        --spacing-md: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-xl: 3rem;
-        --spacing-2xl: 4rem;
-        --spacing-3xl: 6rem;
-    }
-    /* Reset & Base */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        background: var(--primary-bg);
-        color: var(--primary-text);
-        line-height: 1.7;
-        overflow-x: hidden;
-        font-weight: 400;
-        font-size: 16px;
-    }
-
-    /* Sophisticated Background */
-
-
-    /* Subtle Grid Texture */
-    body::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
-        background-size: 40px 40px;
-        z-index: -1;
-        opacity: 0.3;
-    }
-
-    /* Navigation */
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(250, 250, 250, 0.95);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border-color);
-        z-index: 1000;
-        padding: var(--spacing-sm) var(--spacing-lg);
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-card);
-    }
-
-    .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--primary-text);
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .logo:hover {
-        transform: translateY(-2px);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .nav-menu {
-        display: flex;
-        list-style: none;
-        gap: var(--spacing-lg);
-    }
-
-    .nav-link {
-        color: var(--accent-text);
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
-        padding: var(--spacing-xs) 0;
-        font-size: 0.95rem;
-        letter-spacing: 0.01em;
-    }
-
-    .nav-link:hover {
-        color: var(--accent-color);
-        transform: translateY(-1px);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--gradient-primary);
-        transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-        width: 100%;
-    }
-
-    .nav-link.active {
-        color: var(--accent-color);
-    }
-
-    .nav-link.active::after {
-        width: 100%;
-    }
-
-    /* Mobile Menu */
-    .mobile-menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--primary-text);
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    /* Page Container */
-    .page-container {
-        min-height: 100vh;
-        padding-top: 80px;
-    }
-
-    /* Section Styles */
-    .section {
-        padding: var(--spacing-3xl) var(--spacing-lg);
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .section-title {
-
-        font-size: 1.2rem;
-        color: var(--secondary-text);
-        text-align: left;
-        margin-bottom: var(--spacing-2xl);
-        max-width: 1007px;
-        height: 10px;
-        bottom: 50px;
-        margin-bottom: 50px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .section-subtitle {
-        font-size: 2.0rem;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: var(--spacing-xl);
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        max-width: 8000px;
-    }
-
-    /* Card Grid */
-    .card-grid {
-        display: table-column;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: var(--spacing-lg);
-        margin-top: var(--spacing-2xl);
-    }
-
-    .card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 44px;
-        padding: var(--spacing-xl);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        margin-top: 10px;
-        cursor: pointer;
-        box-shadow: var(--shadow-card);
-    }
-
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--gradient-accent);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: 1;
-    }
-
-    .card:hover::before {
-        opacity: 0.03;
-    }
-
-    .card:hover {
-        transform: translateY(-6px) scale(1.01);
-        border-color: var(--accent-light);
-        box-shadow: var(--shadow-hover);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .card-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .card h3 {
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin-bottom: var(--spacing-sm);
-        color: var(--accent-color);
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        letter-spacing: -0.01em;
-    }
-
-    .card .role-type {
-        font-size: 0.9rem;
-        color: var(--secondary-text);
-        margin-bottom: var(--spacing-sm);
-        font-weight: 500;
-    }
-
-    .card p {
-        color: var(--secondary-text);
-        line-height: 1.7;
-        font-size: 0.95rem;
-        letter-spacing: 0.01em;
-        margin-bottom: var(--spacing-md);
-    }
-
-    .card .requirements {
-        background: var(--accent-muted);
-        border-radius: 22px;
-        border: 1px solid #95a8c433;
-        padding: var(--spacing-sm);
-        font-size: 0.9rem;
-        color: var(--accent-text);
-    }
-
-    .card.featured {
-        background: linear-gradient(135deg, var(--card-bg) 0%, var(--accent-bg) 100%);
-        border: 2px solid var(--accent-color);
-        box-shadow: var(--shadow);
-    }
-
-    .card.featured h3 {
-        color: var(--accent-color);
-        font-size: 1.5rem;
-    }
-
-    .btn {
-        padding: var(--spacing-sm) var(--spacing-lg);
-        border: none;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        font-size: 0.9rem;
-        position: relative;
-        overflow: hidden;
-        margin-top: var(--spacing-sm);
-    }
-
-.btn-primary {
-        background: (transparent);
-        color: var(--accent-color);
-        border: 1px solid var(--accent-color);
-        box-shadow: var(--shadow-card);
-    }
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-hover);
-        color: #edf0e2;
-        background: var(--accent-hover);
-        border: 1px solid var(--accent-hover);
-    }
-    
-
-    /* Footer */
-    .footer {
-        background: var(--secondary-bg);
-        border-top: 1px solid var(--border-color);
-        padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
-        text-align: center;
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .footer-content {
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .footer p {
-        color: var(--secondary-text);
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-lg);
-    }
-
-    .social-link {
-        color: var(--secondary-text);
-        font-size: 1.5rem;
-        transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-        color: var(--accent-color);
-        transform: translateY(-3px);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    /* Enhanced Mobile Responsive Design */
-    @media (max-width: 1024px) {
-        .nav-container {
-            padding: 0 var(--spacing-md);
-        }
-        
-        .section {
-            padding: var(--spacing-2xl) var(--spacing-md);
-        }
-        
-        .card-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-    }
-
-    @media (max-width: 768px) {
-        /* Enhanced Mobile Navigation */
-        .navbar {
-            padding: var(--spacing-sm) var(--spacing-md);
-        }
-        
-        .section-title {
-            display: none;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEER | Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg: #030303;
+            --text: #f0f0f0;
+            --accent: #ccff00;
+            --secondary: #ff3366;
+            --tertiary: #00f0ff;
+            --surface: #0a0a0a;
+            --font-main: 'Syne', sans-serif;
+            --font-mono: 'Space Grotesk', sans-serif;
         }
 
-        .section-subtitle {
-            margin-top: 50px;
-        }
-        .nav-container {
+        * {
+            margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
-        .logo {
-            font-size: 1.3rem;
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        .nav-menu {
-            display: none;
+
+        /* Typography */
+        .font-syne {
+            font-family: var(--font-main);
+        }
+
+        .text-huge {
+            font-size: clamp(3rem, 12vw, 15rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+        }
+
+        /* Grain & Canvas */
+        .grain {
             position: fixed;
-            top: 70px;
+            top: 0;
             left: 0;
-            right: 0;
-            background: rgba(250, 250, 250, 0.98);
-            backdrop-filter: blur(20px);
-            flex-direction: column;
-            padding: var(--spacing-lg);
-            border-top: 1px solid var(--border-color);
-            box-shadow: var(--shadow-hover);
-            z-index: 999;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.6;
+            mix-blend-mode: overlay;
         }
 
-        .nav-menu.active {
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Layout */
+        section {
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            padding: 4rem 2rem;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        
-        .nav-menu li {
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
             width: 100%;
+        }
+
+        .team-card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            aspect-ratio: 1/1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .team-card:hover::before {
+            opacity: 1;
+        }
+
+        .member-role {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-name {
+            font-family: var(--font-main);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .member-bio {
+            opacity: 0.6;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .avatar-placeholder {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #222;
+            overflow: hidden;
+        }
+
+        /* Footer */
+        .footer-big {
+            font-family: var(--font-main);
+            font-size: 10vw;
+            font-weight: 800;
             text-align: center;
-        }
-        
-        .nav-link {
-            display: block;
-            padding: var(--spacing-md) 0;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--border-light);
-            width: 100%;
-        }
-        
-        .nav-link:last-child {
-            border-bottom: none;
+            line-height: 0.8;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text);
+            cursor: pointer;
+            transition: all 0.5s ease;
         }
 
-        .mobile-menu-toggle {
-            display: block;
-            padding: var(--spacing-sm);
-            font-size: 1.3rem;
+        .footer-big:hover {
+            color: var(--accent);
+            -webkit-text-stroke: 2px var(--accent);
+            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.4));
         }
-        
-        /* Enhanced Mobile Sections */
-        .section {
-            padding: var(--spacing-xl) var(--spacing-sm);
-        }
-        
-        .section-title {
-            font-size: clamp(2rem, 8vw, 3rem);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .section-subtitle {
-            font-size: 1rem;
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .card-grid {
-            grid-template-columns: 1fr;
-            gap: var(--spacing-md);
-        }
-        
-        .card {
-            padding: var(--spacing-lg);
-        }
-        
-        .card h3 {
-            font-size: 1.2rem;
-        }
-        
-        .card p {
-            font-size: 0.9rem;
-        }
-        
-        .card .role-type {
-            font-size: 0.8rem;
-        }
-        
-        .card .requirements {
-            font-size: 0.8rem;
-            padding: var(--spacing-xs);
-        }
-        
-        .btn {
-            padding: var(--spacing-sm) var(--spacing-md);
-            font-size: 0.9rem;
-        }
-        
-        /* Mobile Footer */
-        .footer {
-            padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-md);
-        }
-        
-        .social-links {
-            gap: var(--spacing-sm);
-        }
-        
-        .social-link {
-            font-size: 1.3rem;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        /* Extra Small Mobile Devices */
-        .section {
-            padding: var(--spacing-lg) var(--spacing-sm);
-        }
-        
-        .section-title {
-            font-size: clamp(1.8rem, 10vw, 2.5rem);
-        }
-        
-        .card {
-            padding: var(--spacing-md);
-        }
-        
-        .card h3 {
-            font-size: 1.1rem;
-        }
-        
-        .card p {
-            font-size: 0.85rem;
-        }
-        
-        .card .requirements {
-            font-size: 0.75rem;
-        }
-    }
-    
-    /* Touch-friendly improvements */
-    @media (hover: none) and (pointer: coarse) {
-        .btn, .nav-link, .card, .social-link {
-            min-height: 44px;
-            min-width: 44px;
-        }
-        
-        .card:hover {
-            transform: none;
-        }
-        
-        .card:active {
-            transform: scale(0.98);
-        }
-        
-        .btn:hover {
-            transform: none;
-        }
-        
-        .btn:active {
-            transform: scale(0.95);
-        }
-    }
-</style>
+    </style>
 </head>
+
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <img src="CleerLogoTrans.png" alt="Cleer Logo" style="height: 6.2rem; width: auto;">
-        
-      </a>
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="features.html" class="nav-link">Features</a></li>
-        <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
-        <li><a href="team.html" class="nav-link active">Join Team</a></li>
-        <li><a href="demo.html" class="nav-link">Demo</a></li>
-        <li><a href="contact.html" class="nav-link">Contact</a></li>
-      </ul>
-      <button class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </nav>
 
-  
-  <div class="page-container">
-   
-    <section class="section">
-      <h2 class="section-title">Open roles</h2>
-      <p class="section-subtitle">Most people show up when it’s safe. The rare ones show up now.</p>
-      
-<div class="card-grid">
-  <div class="card featured">
-    <div class="card-content">
-      <h3><i class="fas fa-code"></i> Software Engineer</h3>
-      <div class="role-type">Engineering • Full-time • Remote</div>
-      <p>You’re joining before the world knows what Cleer is. No bureaucracy, no dead weight — just raw execution. If you want a safe, cushy job, skip this. If you want to help build the first truly aware personal AI, step in.</p>
-      <div class="requirements">
-        <strong>Requirements:</strong> 3+ years building production software<br>
-        <strong>Skills:</strong> Python, ML frameworks, distributed systems, cloud architecture<br>
-        <strong>Bonus:</strong> Experience in AI/ML, shipping fast with small teams
-      </div>
-      <a href="contact.html" class="btn btn-primary">Apply Now</a>
-    </div>
-  </div>
-</div>
+    <!-- Navbar -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference text-white">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <img src="CleerLogoTrans.png" alt="Cleer"
+                class="h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity">
+            <span
+                class="font-syne font-bold text-xl tracking-widest opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-300">CLEER</span>
+        </a>
+        <div class="hidden md:flex gap-8 font-mono text-sm uppercase tracking-widest">
+            <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+            <a href="roadmap.html" class="hover:text-accent transition-colors">Roadmap</a>
+            <a href="team.html" class="text-accent">Team</a>
+            <a href="contact.html" class="hover:text-accent transition-colors">Contact</a>
+        </div>
+        <button class="md:hidden text-2xl">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </nav>
 
-        
-       <!-- <div class="card">
-          <div class="card-content">
-            <h3><i class="fas fa-code"></i>Software Engineer</h3>
-            <div class="role-type">Engineering • Full-time • Remote</div>
-            <p>Run the crew and gon be building the next level AI. You gotta know ML, distributed systems, and the latest web tech like yo life depend on it.</p>
-            <div class="requirements">
-              <strong>Requirements:</strong> You've got three plus years on the block (SWE)<br>
-              <strong>Skills:</strong> Python, ML frameworks, cloud architecture<br>
-              <strong>Bonus:</strong> AI/ML experience, team leadership
+    <div class="grain"></div>
+    <canvas id="canvas-bg"></canvas>
+
+    <div class="wrapper">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="text-center z-10">
+                <h1 class="font-syne text-huge font-bold uppercase mb-8 reveal-text">Join<br><span
+                        class="text-stroke text-transparent" style="-webkit-text-stroke: 2px rgba(255,255,255,0.3);">the
+                        minds</span></h1>
+                <p class="font-mono text-xl uppercase tracking-widest opacity-0 hero-sub">Building the Second You</p>
             </div>
-            <a href="contact.html" class="btn btn-primary">Apply Now</a>
-          </div>
-        </div> -->
-        
-        
-<div class="card featured">
-  <div class="card-content">
-    <h3><i class="fas fa-code"></i> Software Engineer</h3>
-    <div class="role-type">Engineering • Full-time • Remote</div>
+        </section>
 
-    <p>You’ll be building the core systems that let Cleer understand what users see and act with context. This is fast, low-fluff work — screen parsing, real-time automation, and deep integration across desktop and web. If you want predictable structure, look elsewhere. If you want to architect the foundation of a truly aware personal assistant, step in.</p>
+        <!-- Open Roles Grid -->
+        <section class="py-20">
+            <div class="team-grid">
+                <!-- Open Role: Community Manager -->
+                <div class="team-card">
+                    <img src="CleerCine.png" alt="Community Manager" class="job-image">
+                    <div class="job-image-overlay"></div>
+                    <span class="member-role">Open Role</span>
+                    <h3 class="member-name">Community Manager</h3>
+                    <p class="member-bio">Build our growing community, fostering engagement and support for
+                        Cleer's mission.</p>
+                    <a href="contact.html"
+                        class="mt-4 inline-block px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all uppercase font-bold tracking-widest text-xs"
+                        role="button">Closing Soon</a>
+                </div>
 
-    <div class="requirements">
-      <strong>Requirements:</strong> 3+ years building production software<br>
-      <strong>Skills:</strong> Python or TypeScript, vision/automation frameworks, browser & OS-level integration, backend fundamentals<br>
-      <strong>Bonus:</strong> Experience with real-time systems, agentic workflows, or desktop automation
+                <!-- Open Role: Software Engineer -->
+                <div class="team-card">
+                    <img src="CleerCine.png" alt="Software Engineer" class="job-image">
+                    <div class="job-image-overlay"></div>
+                    <span class="member-role">Open Role</span>
+                    <h3 class="member-name">Software Engineer</h3>
+                    <p class="member-bio">Develop and optimize the core technologies that power Cleer's innovative
+                        AI solutions.</p>
+                    <a href="contact.html"
+                        class="mt-4 inline-block px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all uppercase font-bold tracking-widest text-xs"
+                        role="button">Closing Soon</a>
+                </div>
+
+
+            </div>
+        </section>
+
+        <style>
+            .job-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 0;
+                opacity: 0.3;
+                /* Adjust opacity as needed */
+            }
+
+            .job-image-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, var(--bg) 100%);
+                z-index: 1;
+            }
+
+            .team-card>*:not(.job-image):not(.job-image-overlay) {
+                position: relative;
+                /* Ensure text content is above the image and overlay */
+                z-index: 2;
+            }
+        </style>
+
+        <!-- Footer -->
+        <footer class="min-h-[50vh] flex flex-col justify-center items-center relative overflow-hidden">
+            <p class="uppercase tracking-widest mb-10 font-mono text-accent text-sm">Have questions?</p>
+            <a href="contact.html" class="footer-big">CONTACT</a>
+
+            <div
+                class="absolute bottom-10 w-full px-10 flex justify-between text-xs uppercase opacity-30 font-mono tracking-widest">
+                <div>© 2024 Cleer Inc.</div>
+                <div>We are hiring</div>
+            </div>
+        </footer>
     </div>
 
-    <a href="contact.html" class="btn btn-primary">Apply Now</a>
-  </div>
-</div>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
 
-        
+    <script>
+        // Lenis
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
 
+        gsap.registerPlugin(ScrollTrigger);
 
+        // Canvas
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
 
-        <div class="card">
-  <div class="card-content">
-    <h3><i class="fas fa-comments"></i> Community Manager</h3>
-    <div class="role-type">Community • Full-time • Remote</div>
-    <p>You’ll be the connective tissue between early believers and the product we’re building. This isn’t about posting pretty updates — it’s about shaping a movement around a new category of AI. You’ll manage feedback loops, steer narrative, and turn early users into a force that drives the product forward.</p>
-    <div class="requirements">
-      <strong>Requirements:</strong> 2+ years building or managing engaged communities (intern experience still counts)<br>
-      <strong>Skills:</strong> Content strategy, community growth, professional communication<br>
-      <strong>Bonus:</strong> Experience with AI/tech audiences, launching early-stage products
-    </div>
-    <a href="contact.html" class="btn btn-primary">Apply Now</a>
-  </div>
-</div>
+        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
 
-        
-        
-      </div>
-    </section>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
-      <p>Building the future of AI assistance, one innovation at a time.</p>
-      <div class="social-links">
-     
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Enhanced Mobile Menu Toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    mobileMenuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      navMenu.classList.toggle('active');
-      
-      // Toggle hamburger icon
-      const icon = this.querySelector('i');
-      if (navMenu.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
-    
-    // Close menu when clicking on nav links
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        navMenu.classList.remove('active');
-        const icon = mobileMenuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-        navMenu.classList.remove('active');
-        const icon = mobileMenuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
-    
-    // Close menu on scroll
-    window.addEventListener('scroll', function() {
-      if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        const icon = mobileMenuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
-
-    // Enhanced scroll effect to navbar
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (scrollTop > 100) {
-        navbar.style.background = 'rgba(250, 250, 250, 0.98)';
-        navbar.style.backdropFilter = 'blur(20px)';
-      } else {
-        navbar.style.background = 'rgba(250, 250, 250, 0.95)';
-        navbar.style.backdropFilter = 'blur(20px)';
-      }
-      
-      // Hide navbar on scroll down, show on scroll up (mobile only)
-      if (window.innerWidth <= 768) {
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-          navbar.style.transform = 'translateY(-100%)';
-        } else {
-          navbar.style.transform = 'translateY(0)';
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width; this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.3; this.vy = (Math.random() - 0.5) * 0.3;
+                this.size = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
         }
-      }
-      
-      lastScrollTop = scrollTop;
-    });
-
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateCanvas);
         }
-      });
-    }, observerOptions);
+        animateCanvas();
 
-    // Observe all cards with enhanced mobile performance
-    document.querySelectorAll('.card').forEach((el, index) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      
-      // Stagger animations
-      el.style.transitionDelay = `${index * 0.1}s`;
-      
-      observer.observe(el);
-    });
-    
-    // Touch-friendly interactions
-    if ('ontouchstart' in window) {
-      document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('touchstart', function() {
-          this.style.transform = 'scale(0.98)';
+        // Animations
+        gsap.from('.reveal-text', { y: 100, opacity: 0, duration: 1.5, ease: 'power4.out' });
+        gsap.to('.hero-sub', { opacity: 1, letterSpacing: '0.2em', duration: 1.5, delay: 0.5 });
+
+        gsap.utils.toArray('.team-card').forEach((item, i) => {
+            gsap.from(item, {
+                y: 50, opacity: 0, duration: 0.8, delay: i * 0.1,
+                scrollTrigger: { trigger: item, start: 'top 90%' }
+            });
         });
-        
-        card.addEventListener('touchend', function() {
-          this.style.transform = 'scale(1)';
+
+        // Mouse tracking
+        document.addEventListener('mousemove', e => {
+            document.querySelectorAll('.team-card').forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                item.style.setProperty('--mouse-x', `${x}px`);
+                item.style.setProperty('--mouse-y', `${y}px`);
+            });
         });
-      });
-    }
-    
-    // Prevent zoom on double tap for iOS
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function (event) {
-      const now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-  </script>
+    </script>
 </body>
+
 </html>
