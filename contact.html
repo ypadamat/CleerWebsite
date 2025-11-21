@@ -224,17 +224,18 @@
         <!-- Contact Form -->
         <section class="py-20">
             <div class="contact-container">
-                <form>
+                <form action="https://formspree.io/f/xrbajzzw" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder=" " id="name" required>
+                        <input type="text" class="form-input" placeholder=" " id="name" name="name" required>
                         <label for="name" class="form-label">Name</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-input" placeholder=" " id="email" required>
+                        <input type="email" class="form-input" placeholder=" " id="email" name="email" required>
                         <label for="email" class="form-label">Email</label>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-input" placeholder=" " id="message" rows="4" required></textarea>
+                        <textarea class="form-input" placeholder=" " id="message" name="message" rows="4"
+                            required></textarea>
                         <label for="message" class="form-label">Message</label>
                     </div>
                     <div class="text-right">
